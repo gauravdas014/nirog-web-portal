@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const hospitalSchema = new mongoose.Schema(
   {
@@ -18,6 +19,9 @@ const hospitalSchema = new mongoose.Schema(
     address: {
       type: String,
     },
+    password: {
+      type: String,
+    },
     description: {
       type: String,
     },
@@ -32,5 +36,12 @@ const hospitalSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+hospitalSchema.methods.correctPassword = async function (
+  candidatePassword,
+  userPassword
+) {
+  return await bcrypt.compare(candidatePassword, userPassword);
+};
 
 module.exports = mongoose.model('Hospital', hospitalSchema);
