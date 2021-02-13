@@ -1,4 +1,5 @@
 const User = require('../models/userModel');
+const Baby = require('../models/babyModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -103,8 +104,44 @@ exports.editUser = async (req, res) => {
 };
 
 exports.registerBaby = async (req, res) => {
-  const baby = await User.create({
-    name: req.body.babyName,
-    age: req.body.age,
-  });
+  try {
+    const newBaby = await Baby.create({
+      name: req.body.name,
+      age: req.body.age,
+      parent: req.params.userId,
+      motherName: req.body.motherName,
+      fatherName: req.body.fatherName,
+    });
+    res.status(201).json({
+      status: 'success',
+      baby: newBaby,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
+exports.editBabyDetails = async (req, res) => {
+  try {
+    const updatedBaby = await Baby.findByIdAndUpdate(
+      req.params.babyId,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(200).json({
+      status: 'success',
+      baby: updatedBaby,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
 };
