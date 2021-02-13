@@ -26,44 +26,42 @@
           </div>
         </div>
           </div>
-    <div class="content">
-      <div class="text">Register Here</div>
-      <form action="/auth/signup" method="POST">
-        <div class="field">
-          <span class="fas fa-pen"></span>
-          <input type="text" name="name" placeholder="Hospital Name" required />
-        </div>
-        <div class="field">
-          <span class="fas fa-id-card"></span>
-          <input type="text" name="address" placeholder="address" required />
-        </div>
-        <div class="field">
-          <span class="fas fa-user"></span>
-          <input type="email" name="email" placeholder="Email" required />
-        </div>
-        <div class="field">
-          <span class="fas fa-phone"></span>
-          <input type="text" name="phone" placeholder="phone" required />
-        </div>
-        <div class="field">
-          <span class="fas fa-lock"></span>
-          <input type="password" name="password" placeholder="Password" />
-        </div>
-        <div class="forgot-pass"><a href="#">Forgot Password?</a></div>
-        <button type="submit">Sign up</button>
-        <div class="signup">
-          Already registered?
-          <a href="/login">Login now</a>
-        </div>
-      </form>
-    </div>
-    <a href="/" class="back-button">
-      <div class="arrow-wrap">
-        <span class="arrow-part-1"></span>
-        <span class="arrow-part-2"></span>
-        <span class="arrow-part-3"></span>
-      </div>
-    </a>
+          <form method="POST" action="/auth/signup" class="signup">
+            <h1>Register</h1>
+            <br/>
+                    
+            <div class="signup__field">
+              <input class="signup__input" type="text" name="name" id="name" required />
+              <label class="signup__label" for="name">Name</label>
+            </div>
+
+            <div class="signup__field">
+              <input class="signup__input" type="text" name="phone" id="phone" required />
+              <label class="signup__label" for="email">Phone</label>
+            </div>
+
+            <div class="signup__field">
+              <input class="signup__input" type="email" name="email" id="email" required />
+              <label class="signup__label" for="email">Email</label>
+            </div>
+
+
+            <div class="signup__field">
+              <input class="signup__input" type="address" name="address" id="address" required />
+              <label class="signup__label" for="address">Address</label>
+            </div>
+
+            <div class="signup__field">
+              <input class="signup__input" type="password" name="password" id="password" required />
+              <label class="signup__label" for="password">Password</label>
+            </div>
+          
+            <input type="submit" value="Signup">
+
+            <br/>
+            <h2>Already registered? <span> <a style="color: #188255; text-decoration: none;" href="/login">Login</a> </span></h2>
+
+          </form>
   </body>
   <script
   src="https://code.jquery.com/jquery-3.5.1.min.js"
