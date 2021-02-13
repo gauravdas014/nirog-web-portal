@@ -1,9 +1,11 @@
 const express = require('express');
-const authController = require('../controllers/authController');
+const vaccineController = require('../controllers/vaccineController');
 const router = express.Router();
 
-router.route('/signup').post(authController.signup);
-router.route('/login').post(authController.signin);
-router.route('/signout').get(authController.signout);
+router.route('/').get(vaccineController.getAllVaccines);
+router.route('/:vaccineId').get(vaccineController.getVaccine);
+
+router.route('/').post(vaccineController.addVaccine);
+router.route('/:vaccineId').post(vaccineController.editVaccine);
 
 module.exports = router;
