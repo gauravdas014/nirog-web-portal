@@ -80,6 +80,28 @@ exports.getUser = async (req, res) => {
   }
 };
 
+exports.editUser = async (req, res) => {
+  try {
+    const updatedUser = await User.findByIdAndUpdate(
+      req.params.userId,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    res.status(200).json({
+      status: 'success',
+      user: updatedUser,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 exports.registerBaby = async (req, res) => {
   const baby = await User.create({
     name: req.body.babyName,
