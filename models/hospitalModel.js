@@ -1,16 +1,23 @@
 const mongoose = require('mongoose');
+const validator = require('validator');
 const bcrypt = require('bcryptjs');
 
 const hospitalSchema = new mongoose.Schema(
   {
     name: {
       type: String,
+      required: [true, 'Please provide the name of the hospital'],
+      trim: true,
     },
     phone: {
       type: String,
     },
     email: {
       type: String,
+      required: [true, 'Please provide your email'],
+      unique: true,
+      lowercase: true,
+      validate: [validator.isEmail, 'Please provide a valid email'],
     },
     isApproved: {
       type: Boolean,
