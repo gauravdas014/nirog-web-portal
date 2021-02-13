@@ -1,6 +1,8 @@
 const puppeteer = require('puppeteer');
 
 exports.scrap = () => {
+  let final = [];
+  finalFiltered = [];
   (async () => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
@@ -10,7 +12,6 @@ exports.scrap = () => {
       const tds = Array.from(document.querySelectorAll('tr'));
       return tds.map((td) => td.innerText);
     });
-    let final = [];
     data.forEach((entry) => {
       let finalObj = {
         name: '',
@@ -27,14 +28,13 @@ exports.scrap = () => {
       finalObj.site = temp[4];
       final.push(finalObj);
     });
-    finalFiltered = [];
     final.forEach((entry) => {
       if (entry.name && entry.whenToGive && entry.site !== 'Site') {
         finalFiltered.push(entry);
       }
     });
     // console.log(finalFiltered);
-    return finalFiltered;
     await browser.close();
   })();
+  return finalFiltered;
 };
