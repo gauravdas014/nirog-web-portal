@@ -29,6 +29,13 @@ const createSendToken = async (user, statusCode, req, res) => {
 
 exports.signup = async (req, res) => {
   try {
+    const user = await User.findOne({ email: req.body.email });
+    if (user) {
+      return res.status(400).json({
+        status: 'fail',
+        message: 'Email already registered!',
+      });
+    }
     const newUser = await User.create({
       name: req.body.name,
       phone: req.body.phone,
