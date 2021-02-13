@@ -65,6 +65,21 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.userId);
+    res.status(200).json({
+      status: 'success',
+      user,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 exports.registerBaby = async (req, res) => {
   const baby = await User.create({
     name: req.body.babyName,
