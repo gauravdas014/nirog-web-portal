@@ -111,6 +111,9 @@ exports.registerBaby = async (req, res) => {
       parent: req.params.userId,
       motherName: req.body.motherName,
       fatherName: req.body.fatherName,
+      dateOfBirth: req.body.dateOfBirth,
+      monthOfBirth: req.body.monthOfBirth,
+      yearOfBirth: req.body.yearOfBirth,
     });
     res.status(201).json({
       status: 'success',
