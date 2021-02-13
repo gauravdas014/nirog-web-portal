@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+// configure dotenv for storeing environment variables
 dotenv.config({ path: './config.env' });
 
 const app = require('./app');
@@ -13,6 +14,7 @@ if (process.env.NODE_ENV === 'development') {
 
 DB = process.env.MONGODB_CLOUD_URI;
 
+// mongo db connection using mongoose
 mongoose
   .connect(DB, {
     useNewUrlParser: true,
@@ -29,6 +31,7 @@ mongoose
 
 const port = process.env.PORT || 8080;
 
+// listening to the app
 app.listen(port, () => {
   console.log(`App running on port ${port}`);
 });
