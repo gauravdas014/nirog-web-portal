@@ -1,7 +1,5 @@
 const Hospital = require('../models/hospitalModel');
 
-// exports.registerHospital = async (req, res) => {};
-
 exports.getAllHospitals = async (req, res) => {
   try {
     const hospitals = await Hospital.find({ isApproved: true });

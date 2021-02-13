@@ -11,7 +11,7 @@ if (process.env.NODE_ENV === 'development') {
   DB = process.env.MONGODB_CLOUD_URI;
 }
 
-DB = process.env.MONGODB_CLOUD_URI;
+// DB = process.env.MONGODB_CLOUD_URI;
 
 mongoose
   .connect(DB, {
