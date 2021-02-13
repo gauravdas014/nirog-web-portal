@@ -1,5 +1,7 @@
 const express = require('express');
 const path = require('path');
+const cookieParser = require('cookie-parser');
+
 const viewRouter = require('./routes/viewRoutes');
 const authRouter = require('./routes/authRoutes');
 const doctorRouter = require('./routes/doctorRoutes');
@@ -10,6 +12,7 @@ const userRouter = require('./routes/userRoutes');
 const app = express();
 
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.static(__dirname));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/public'));

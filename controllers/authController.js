@@ -2,12 +2,14 @@ const Hospital = require('../models/hospitalModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// function which will sign the jwt
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
+// function to create and send token on sign up and sign in , whenever the function is called
 const createSendToken = async (user, statusCode, req, res) => {
   const token = signToken(user._id);
 
@@ -17,13 +19,10 @@ const createSendToken = async (user, statusCode, req, res) => {
     ),
     httpOnly: true,
   });
-
-  user.token = token;
-  await user.save();
-  user.password = undefined;
   res.status(statusCode).render('portal/dashboard');
 };
 
+// sign up controller function
 exports.signup = async (req, res) => {
   try {
     const newHospital = await Hospital.create({
@@ -46,6 +45,7 @@ exports.signup = async (req, res) => {
   }
 };
 
+// sign in function
 exports.signin = async (req, res) => {
   try {
     const hospital = await Hospital.findOne({ email: req.body.email });
@@ -64,7 +64,7 @@ exports.signin = async (req, res) => {
     });
   }
 };
-
+// sign out function
 exports.signout = async (req, res) => {
   try {
     res.clearCookie('jwt');
