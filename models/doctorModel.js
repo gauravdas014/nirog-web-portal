@@ -3,13 +3,17 @@ const mongoose = require('mongoose');
 const doctorSchema = new mongoose.Schema(
   {
     name: {
-      type: Stirng,
+      type: String,
     },
     email: {
-      type: Stirng,
+      type: String,
     },
     specialization: {
       type: String,
+    },
+    hospital: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Hospital',
     },
     address: {
       type: String,
