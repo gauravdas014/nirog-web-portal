@@ -26,10 +26,12 @@ const vaccineSchema = new mongoose.Schema(
     route: {
       type: String,
       required: true,
+      trim: true,
     },
     site: {
       type: String,
       required: true,
+      trim: true,
     },
   },
   {

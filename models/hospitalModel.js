@@ -11,6 +11,7 @@ const hospitalSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
+      required: [true, 'Please provide phone number'],
     },
     email: {
       type: String,
@@ -25,6 +26,7 @@ const hospitalSchema = new mongoose.Schema(
     },
     address: {
       type: String,
+      required: [true, 'Please provide hospital address'],
     },
     password: {
       type: String,
@@ -34,6 +36,7 @@ const hospitalSchema = new mongoose.Schema(
     },
     image: {
       type: String,
+      required: [true, 'Please provide hospital image'],
     },
     roomAvailableCount: {
       type: String,

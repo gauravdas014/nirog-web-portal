@@ -134,6 +134,21 @@ exports.registerBaby = async (req, res) => {
   }
 };
 
+exports.getBabyDetails = async (req, res) => {
+  try {
+    const baby = await Baby.findOne({ parent: req.params.parentId });
+    res.status(200).json({
+      status: 'success',
+      baby,
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
+
 exports.editBabyDetails = async (req, res) => {
   try {
     const updatedBaby = await Baby.findByIdAndUpdate(
