@@ -3,12 +3,14 @@ const Baby = require('../models/babyModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Function to sign jwt token
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
 
+// fuction to create and send jwt token while signing up or loggig in
 const createSendToken = async (user, statusCode, req, res) => {
   const token = signToken(user._id);
 
@@ -27,6 +29,7 @@ const createSendToken = async (user, statusCode, req, res) => {
   });
 };
 
+// Function to sign up
 exports.signup = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -54,6 +57,7 @@ exports.signup = async (req, res) => {
   }
 };
 
+// Function to login
 exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -73,6 +77,7 @@ exports.login = async (req, res) => {
   }
 };
 
+// Function to get single user info
 exports.getUser = async (req, res) => {
   try {
     const user = await User.findById(req.params.userId);
@@ -88,6 +93,7 @@ exports.getUser = async (req, res) => {
   }
 };
 
+// Function to edit user information
 exports.editUser = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(
@@ -110,6 +116,7 @@ exports.editUser = async (req, res) => {
   }
 };
 
+// Function to register a baby
 exports.registerBaby = async (req, res) => {
   try {
     const newBaby = await Baby.create({
@@ -133,7 +140,7 @@ exports.registerBaby = async (req, res) => {
     });
   }
 };
-
+// Function to get baby details
 exports.getBabyDetails = async (req, res) => {
   try {
     const baby = await Baby.findOne({ parent: req.params.parentId });
@@ -149,6 +156,7 @@ exports.getBabyDetails = async (req, res) => {
   }
 };
 
+// Function to edit baby details
 exports.editBabyDetails = async (req, res) => {
   try {
     const updatedBaby = await Baby.findByIdAndUpdate(

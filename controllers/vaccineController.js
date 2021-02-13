@@ -1,8 +1,7 @@
 const Vaccine = require('../models/vaccineModel');
 const puppeteer = require('puppeteer');
 
-const scrapper = require('../util/scrapper');
-
+// Function to add vaccine
 exports.addVaccine = async (req, res) => {
   try {
     const newVaccine = await Vaccine.create(req.body);
@@ -18,18 +17,24 @@ exports.addVaccine = async (req, res) => {
   }
 };
 
+// Function to get list of vaccines
 exports.getAllVaccines = async (req, res) => {
   try {
+    // initialized empty array for storing result of scrapper
     let final = [];
     finalFiltered = [];
+    // main function which scraps
     async function scrap() {
+      // launch puppeteer
       const browser = await puppeteer.launch();
       const page = await browser.newPage();
       await page.goto('http://www.nrhmhp.gov.in/content/immunisation');
       const data = await page.evaluate(() => {
+        // pick all the contents with query selector "tr"
         const tds = Array.from(document.querySelectorAll('tr'));
         return tds.map((td) => td.innerText);
       });
+      // initialize an empty model for storing the scrapped data
       data.forEach((entry) => {
         let finalObj = {
           name: '',
@@ -38,6 +43,7 @@ exports.getAllVaccines = async (req, res) => {
           route: '',
           site: '',
         };
+        // split the array of data to get indiidual column
         let temp = entry.split('\t');
         finalObj.name = temp[0];
         finalObj.whenToGive = temp[1];

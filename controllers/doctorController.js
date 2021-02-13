@@ -1,5 +1,6 @@
 const Doctor = require('../models/doctorModel');
 
+// function to retrieve all doctors info
 exports.getAllDoctors = async (req, res) => {
   try {
     const doctors = await Doctor.find();
@@ -15,6 +16,7 @@ exports.getAllDoctors = async (req, res) => {
   }
 };
 
+// Function to get info of a single doctor
 exports.getDoctor = async (req, res) => {
   try {
     const doctor = await Doctor.findById(req.params.doctorId);
@@ -30,6 +32,7 @@ exports.getDoctor = async (req, res) => {
   }
 };
 
+// Function to get list of doctoes hospital wise
 exports.getDoctorsHospitalWise = async (req, res) => {
   try {
     const doctors = await Doctor.find({ hospital: req.params.hospitalId });
@@ -46,6 +49,7 @@ exports.getDoctorsHospitalWise = async (req, res) => {
   }
 };
 
+// Function for adding new doctor to the list of doctors
 exports.addDoctor = async (req, res) => {
   try {
     const newDoctor = await Doctor.create(req.body);
@@ -61,6 +65,7 @@ exports.addDoctor = async (req, res) => {
   }
 };
 
+// Function for editing doctor information
 exports.editDoctor = async (req, res) => {
   try {
     const updatedDoctor = await Doctor.findByIdAndUpdate(
