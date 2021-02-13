@@ -1,4 +1,5 @@
 const Vaccine = require('../models/vaccineModel');
+const puppeteer = require('puppeteer');
 
 exports.addVaccine = async (req, res) => {
   try {
