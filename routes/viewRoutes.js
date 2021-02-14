@@ -13,4 +13,8 @@ router.get('/login', (req, res) => {
   res.render('portal/login');
 });
 
+router.get('/hospital/update/contact', (req, res) => {
+  res.render('portal/updateContact');
+});
+
 module.exports = router;
