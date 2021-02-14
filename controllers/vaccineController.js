@@ -25,7 +25,7 @@ exports.getAllVaccines = async (req, res) => {
     finalFiltered = [];
     // main function which scraps
     async function scrap() {
-      // launch puppeteer
+      // launch puppeteer and add some args to fix error in heroku
       const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox'],
       });
