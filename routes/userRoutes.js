@@ -15,4 +15,6 @@ router.route('/baby/register/:userId').post(userController.registerBaby);
 
 router.route('/baby/:babyId').post(userController.editBabyDetails);
 
+router.route('/baby/taken/vaccine').post(userController.vaccineTaken);
+
 module.exports = router;

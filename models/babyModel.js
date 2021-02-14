@@ -37,6 +37,12 @@ const babySchema = new mongoose.Schema({
     ref: 'User',
     required: [true, "Please provide information about baby's parent"],
   },
+  vaccinesTaken: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Vaccine',
+    },
+  ],
 });
 
 module.exports = mongoose.model('Baby', babySchema);
