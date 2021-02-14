@@ -1,4 +1,6 @@
 const Hospital = require('../models/hospitalModel');
+const Doctor = require('../models/doctorModel');
+const Vaccine = require('../models/vaccineModel');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -19,7 +21,11 @@ const createSendToken = async (user, statusCode, req, res) => {
     ),
     httpOnly: true,
   });
-  res.status(statusCode).render('portal/dashboard');
+  const doctors = await Doctor.find({ hospital: user._id });
+  const vaccines = await Vaccine.find();
+  res
+    .status(statusCode)
+    .render('portal/dashboard', { hospital: user, doctors, vaccines });
 };
 
 // sign up controller function
