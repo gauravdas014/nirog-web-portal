@@ -101,3 +101,18 @@ exports.addDoctorForPortal = async (req, res) => {
     });
   }
 };
+
+exports.addVaccineForPortal = async (req, res) => {
+  try {
+    await Vaccine.create(req.body);
+    const hospital = await Hospital.findById(req.params.hospitalId);
+    const doctors = await Doctor.find({ hospital: req.params.hospitalId });
+    const vaccines = await Vaccine.find();
+    res.render('portal/dashboard', { hospital, doctors, vaccines });
+  } catch (err) {
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};

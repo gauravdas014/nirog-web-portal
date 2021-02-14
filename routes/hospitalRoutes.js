@@ -15,4 +15,8 @@ router
   .route('/add/doctor/:hospitalId')
   .post(hospitalController.addDoctorForPortal);
 
+router
+  .route('/add/vaccine/:hospitalId')
+  .post(hospitalController.addVaccineForPortal);
+
 module.exports = router;

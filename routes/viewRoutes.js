@@ -29,4 +29,9 @@ router.get('/hospital/add/doctor/:hospitalId', async (req, res) => {
   res.render('portal/addDoctor', { hospital });
 });
 
+router.get('/hospital/add/vaccine/:hospitalId', async (req, res) => {
+  const hospital = await Hospital.findById(req.params.hospitalId);
+  res.render('portal/addVaccine', { hospital });
+});
+
 module.exports = router;
