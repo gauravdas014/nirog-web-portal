@@ -183,7 +183,7 @@ exports.editBabyDetails = async (req, res) => {
 
 exports.vaccineTaken = async (req, res) => {
   try {
-    const baby = await Baby.findById(req.body.babyId);
+    const baby = await Baby.findById(req.body.babyId).populate('vaccinesTaken');
     baby.vaccinesTaken.push(req.body.vaccineId);
     await baby.save();
     res.status(200).json({
