@@ -62,7 +62,8 @@ exports.getAllVaccines = async (req, res) => {
       await browser.close();
       return finalFiltered;
     }
-    let vaccines = await scrap();
+    // let vaccines = await scrap();
+    const vaccines = await Vaccine.find();
     res.status(200).json({
       status: 'success',
       vaccines,
@@ -111,3 +112,5 @@ exports.editVaccine = async (req, res) => {
     });
   }
 };
+
+// exports.getVaccinesHospitalWise()

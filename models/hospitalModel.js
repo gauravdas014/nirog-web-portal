@@ -34,6 +34,12 @@ const hospitalSchema = new mongoose.Schema(
     description: {
       type: String,
     },
+    vaccines: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Vaccine',
+      },
+    ],
     image: {
       type: String,
       // required: [true, 'Please provide hospital image'],
