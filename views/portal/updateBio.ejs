@@ -4,9 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/jpg" href="/img/favicon.png"/>
-    <link rel="stylesheet" href="/css/login.css" />
+    <link rel="stylesheet" href="/css/updateBio.css" />
 
-    <title>Nirog | Update Contact</title>
+    <title>Nirog | Bio</title>
   </head>
   <body>
     <div class="loader-wrapper">
@@ -28,28 +28,12 @@
         </div>
           </div>
           <form method="POST" action="/api/hospital/update/info/<%= hospital._id %>" class="signup">
-            <h1>Update Contact Info</h1>
+            <h1>Update Bio</h1>
             <br/>
                     
             <div class="signup__field">
-              <input class="signup__input" type="text" name="name" id="email" value="<%= hospital.name %>" required />
-              <label class="signup__label" for="email">Name</label>
-            </div>
-
-            <div class="signup__field">
-              <input class="signup__input" type="email" name="email" id="email" value="<%= hospital.email %>" required />
-              <label class="signup__label" for="email">Email</label>
-            </div>
-
-            <div class="signup__field">
-              <input class="signup__input" type="text" name="address" id="address" value="<%= hospital.address %>" required />
-              <label class="signup__label" for="email">Address</label>
-            </div>
-          
-            <div class="signup__field">
-              <input class="signup__input" type="phone" name="phone" id="phone" value="<%= hospital.phone %>" required />
-              <label class="signup__label" for="password">Phone</label>
-            </div>
+              <textarea style="padding: 10px;" id="bio" name="description" style="border-radius: 20px;" cols="30" rows="10"><%= hospital.description %></textarea>
+              </div>
           
             <input type="submit" value="Update">
 

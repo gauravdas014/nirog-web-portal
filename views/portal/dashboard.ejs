@@ -15,10 +15,10 @@
     <main class="main">
         <div class="main__div1">
             <a class="main-left-option first-opt" href="">Hospitals</a>
-            <a class="main-left-option" href="/hospital/update/contact">Edit Contact Info</a>
-            <a class="main-left-option" href="">Edit Bio</a>
-            <a class="main-left-option" href="">Edit Vaccine List</a>
-            <a class="main-left-option" href="">Edit Doctor's List</a>
+            <a class="main-left-option" href="/hospital/update/contact/<%= hospital._id %>">Edit Contact Info</a>
+            <a class="main-left-option" href="/hospital/update/bio/<%= hospital._id %>">Edit Bio</a>
+            <a class="main-left-option" href="/hospital/add/doctor/<%= hospital._id %>">Add Doctor</a>
+            <a class="main-left-option" href="/hospital/add/vaccine/<%= hospital._id %>">Add Vaccine</a>
             <a class="main-left-option" href="/auth/signout">Log out</a>
 
         </div>
