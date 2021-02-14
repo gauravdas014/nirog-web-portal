@@ -197,3 +197,25 @@ exports.vaccineTaken = async (req, res) => {
     });
   }
 };
+
+exports.vaccineTakenRemove = async (req, res) => {
+  try {
+    const baby = await Baby.findById(req.body.babyId).populate('vaccinesTaken');
+    baby.vaccinesTaken.forEach((vaccine) => {
+      if (vaccine._id == req.body.vaccineId) {
+        baby.vaccinesTaken.splice(baby.vaccinesTaken.indexOf(vaccine), 1);
+      }
+    });
+    await baby.save();
+    res.status(200).json({
+      status: 'success',
+      baby,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(400).json({
+      status: 'fail',
+      message: err,
+    });
+  }
+};
