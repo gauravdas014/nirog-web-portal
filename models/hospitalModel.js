@@ -42,7 +42,6 @@ const hospitalSchema = new mongoose.Schema(
     ],
     image: {
       type: String,
-      // required: [true, 'Please provide hospital image'],
     },
     roomAvailableCount: {
       type: String,
