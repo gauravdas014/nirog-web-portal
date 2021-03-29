@@ -20,16 +20,21 @@ body {
   position: fixed;
   top: 0px;
   left: 0;
+  right: 0;
   padding: 17px 0px;
   z-index: 5;
   width: 100%;
   background-color: #fff;
-  /* box-shadow: 0px 5px 5px #cad5e2; */
   box-shadow: 0px 5px 5px #e2e2e2;
 }
 
 .navbar__logo {
   display: flex;
+  margin-left: 100px;
+}
+
+.menu {
+  padding-right: 100px;
 }
 
 .navbar__logo-name {
@@ -64,7 +69,7 @@ body {
 .menu a {
   font-size: 17px;
   font-weight: 500;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
   color: #000;
   display: block;
