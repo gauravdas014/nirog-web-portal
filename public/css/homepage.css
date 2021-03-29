@@ -24,7 +24,8 @@ body {
   z-index: 5;
   width: 100%;
   background-color: #fff;
-  box-shadow: 0px 5px 5px #cad5e2;
+  /* box-shadow: 0px 5px 5px #cad5e2; */
+  box-shadow: 0px 5px 5px #e2e2e2;
 }
 
 .navbar__logo {
